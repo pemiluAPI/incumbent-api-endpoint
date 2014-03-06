@@ -29,5 +29,5 @@ IncumbentApiEndpoint::Application.configure do
 
   # PemiluAPI
   config.pemilu_api_endpoint = "http://pemiluapi.stagingapps.net/"
-  config.pemilu_api_key = "c560ad03d85ccb8fdf2167450dc030d9"
+  config.pemilu_api_key = "apiKey=c560ad03d85ccb8fdf2167450dc030d9"
 end
