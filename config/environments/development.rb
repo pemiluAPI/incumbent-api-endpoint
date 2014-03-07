@@ -28,6 +28,6 @@ IncumbentApiEndpoint::Application.configure do
   config.assets.debug = true
 
   # PemiluAPI
-  config.pemilu_api_endpoint = "http://pemiluapi.local/candidate"
+  config.pemilu_api_endpoint = "http://pemiluapi.local"
   config.pemilu_api_key = "apiKey=06ec082d057daa3d310b27483cc3962e"
 end

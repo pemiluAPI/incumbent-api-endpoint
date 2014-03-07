@@ -61,21 +61,21 @@ class Incumbent < ActiveRecord::Base
   private
   def get_data_provinsi(field)
     return nil if field.id_provinsi.blank?
-    provinsi_end = HTTParty.get("#{Rails.configuration.pemilu_api_endpoint}/api/provinsi/#{field.id_provinsi}?#{Rails.configuration.pemilu_api_key}", timeout: 500)
+    provinsi_end = HTTParty.get("#{Rails.configuration.pemilu_api_endpoint}/candidate/api/provinsi/#{field.id_provinsi}?#{Rails.configuration.pemilu_api_key}", timeout: 500)
     provinsi = provinsi_end.parsed_response['data']['results']['provinsi'].first rescue nil
     nama_propinsi = provinsi["nama"] rescue nil
   end
 
   def get_data_dapil(field)
     return nil if field.id_dapil.blank?
-    dapil_end = HTTParty.get("#{Rails.configuration.pemilu_api_endpoint}/api/dapil/#{field.id_dapil}?#{Rails.configuration.pemilu_api_key}", timeout: 500)
+    dapil_end = HTTParty.get("#{Rails.configuration.pemilu_api_endpoint}/candidate/api/dapil/#{field.id_dapil}?#{Rails.configuration.pemilu_api_key}", timeout: 500)
     dapil = dapil_end.parsed_response['data']['results']['dapil'].first rescue nil
     nama_dapil = dapil["nama"] rescue nil
   end
 
   def get_data_partai(field)
     return nil if field.id_partai.blank?
-    partai_end = HTTParty.get("#{Rails.configuration.pemilu_api_endpoint}/api/partai/#{field.id_partai}?#{Rails.configuration.pemilu_api_key}", timeout: 500)
+    partai_end = HTTParty.get("#{Rails.configuration.pemilu_api_endpoint}/candidate/api/partai/#{field.id_partai}?#{Rails.configuration.pemilu_api_key}", timeout: 500)
     partai = partai_end.parsed_response['data']['results']['partai'].first rescue nil
     nama_partai = partai["nama"] rescue nil
   end
