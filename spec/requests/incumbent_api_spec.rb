@@ -26,16 +26,16 @@ describe IncumbentApi::API do
       get "/api/incumbents?limit=1"
       ress = JSON.parse(response.body)
       response.status.should == 200
-      ress["results"]["count"].should == 2
-      ress["results"]["total"].should == 1
+      ress["results"]["count"].should == 1
+      ress["results"]["total"].should == 2
     end
 
     it "offset params should works" do
       get "/api/incumbents?limit=10&offset=1"
       ress = JSON.parse(response.body)
       response.status.should == 200
-      ress["results"]["count"].should == 2
-      ress["results"]["total"].should == 1
+      ress["results"]["count"].should == 1
+      ress["results"]["total"].should == 2
       ress["results"]["incumbents"][0]['id'].should == "002"
     end
 
@@ -45,7 +45,7 @@ describe IncumbentApi::API do
       response.status.should == 200
       ress["results"]["count"].should == 1
       ress["results"]["total"].should == 1
-      ress["results"]["incumbents"]['id'].should == "002"
+      ress["results"]["incumbents"][0]['id'].should == "002"
     end
     
   end
