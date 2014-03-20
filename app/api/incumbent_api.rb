@@ -24,12 +24,12 @@ module IncumbentApi
       route_param :id do
         get do
           incumbent = Incumbent.find_by(id: params[:id])
-          incumbent_detail = incumbent.details rescue nil
+          incumbent_detail = [incumbent.details] rescue nil
           {
             results: {
               count: (incumbent_detail) ? 1 : 0,
               total: (incumbent_detail) ? 1 : 0,
-              incumbents: [incumbent_detail]
+              incumbents: incumbent_detail
             }
           }
         end
