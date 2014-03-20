@@ -1,9 +1,9 @@
 class Incumbent < ActiveRecord::Base
   self.primary_key  = "id"
 
-  def self.find_all(params = Hash.new())
+  def self.find_all(params = Hash.new(), get_total = false)
     incumbents = Array.new
-    data = Incumbent.all.limit(params[:limit]).offset(params[:offset])
+    data = (get_total) ? Incumbent.all : Incumbent.limit(params[:limit]).offset(params[:offset])
     data = data.where('nama like ?', "%#{params[:nama].gsub('_', ' ')}%") if params[:nama]
     data = data.where('agama like ?', "%#{params[:agama].gsub('_', ' ')}%") if params[:agama]
     data = data.where('id_partai = ?', params[:partai]) if params[:partai]
@@ -17,8 +17,6 @@ class Incumbent < ActiveRecord::Base
     end
     incumbents
   end
-
-  
 
   def details
     {
@@ -55,7 +53,6 @@ class Incumbent < ActiveRecord::Base
       tanggal_akhir: self.tanggal_berakhir.to_s,
       keterangan: self.keterangan
     }
-     
   end
 
 end

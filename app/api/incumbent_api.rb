@@ -9,8 +9,8 @@ module IncumbentApi
         incumbents = Incumbent.find_all(params)
         {
           results: {
-            count: Incumbent.count,
-            total: incumbents.count,
+            count: incumbents.count,
+            total: Incumbent.find_all(params, true).count,
             incumbents: incumbents
           } 
         }
@@ -29,7 +29,7 @@ module IncumbentApi
             results: {
               count: (incumbent_detail) ? 1 : 0,
               total: (incumbent_detail) ? 1 : 0,
-              incumbents: incumbent_detail
+              incumbents: [incumbent_detail]
             }
           }
         end
