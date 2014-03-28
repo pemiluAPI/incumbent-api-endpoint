@@ -12,6 +12,7 @@ class Incumbent < ActiveRecord::Base
     data = data.where('jenis_kelamin = ?', params[:jenis_kelamin]) if params[:jenis_kelamin]
     data = data.where('lembaga = ?', params[:lembaga]) if params[:lembaga]
     data = data.where('tahun = ?', params[:tahun]) if params[:tahun]
+    return data.count if get_total
     data.each do |field|
       incumbents << field.details
     end
