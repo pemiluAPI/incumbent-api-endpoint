@@ -10,6 +10,14 @@ describe Incumbent do
      Incumbent.find_all.count.should == 2
   end
 
+  it "should return array result" do
+     Incumbent.find_all(Hash.new, false).class.should == Array
+  end
+
+  it "should return interger count" do
+     Incumbent.find_all(Hash.new, true).class.should == Fixnum
+  end
+
   it "should details of Incumbent" do
      @incumbent.details.should == details
   end
