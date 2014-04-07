@@ -1,5 +1,6 @@
 module IncumbentApi
-  class API < Grape::API
+  class APIv1 < Grape::API
+    version 'v1', using: :accept_version_header
     prefix 'api'
     format :json
 
